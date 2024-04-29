@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reddit.API", "Reddit.API\Reddit.API.csproj", "{088E9A97-9F88-4B61-B378-BE99743BEE40}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reddit.Contracts", "Reddit.Contracts\Reddit.Contracts.csproj", "{2B189807-117D-471A-AB50-B24C4A61C6B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C3E647C4-CB4A-4EC8-A46E-59AD1ADEE49D}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reddit.DAL", "Reddit.DAL\Reddit.DAL.csproj", "{F7F22C5C-505B-4EFE-8FA7-D18B2DB2229D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2B189807-117D-471A-AB50-B24C4A61C6B7} = {2B189807-117D-471A-AB50-B24C4A61C6B7}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{088E9A97-9F88-4B61-B378-BE99743BEE40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{088E9A97-9F88-4B61-B378-BE99743BEE40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{088E9A97-9F88-4B61-B378-BE99743BEE40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{088E9A97-9F88-4B61-B378-BE99743BEE40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B189807-117D-471A-AB50-B24C4A61C6B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B189807-117D-471A-AB50-B24C4A61C6B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B189807-117D-471A-AB50-B24C4A61C6B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B189807-117D-471A-AB50-B24C4A61C6B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7F22C5C-505B-4EFE-8FA7-D18B2DB2229D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7F22C5C-505B-4EFE-8FA7-D18B2DB2229D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7F22C5C-505B-4EFE-8FA7-D18B2DB2229D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7F22C5C-505B-4EFE-8FA7-D18B2DB2229D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {017C2225-0BED-4C1A-B6EE-3CA08AFF88EB}
+	EndGlobalSection
+EndGlobal
