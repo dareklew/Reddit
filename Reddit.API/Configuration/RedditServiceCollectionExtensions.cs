@@ -13,8 +13,8 @@ namespace Reddit.API.Configuration
         {
                 services.AddHttpClient<IRedditTokenApiClient, RedditTokenApiClient>();
                 services.AddHttpClient<IRedditApiClient, RedditApiClient>();
-                services.AddTransient<IRedditRepository, RedditRepository>();
-                services.AddTransient<RedditDbContext>();
+                services.AddScoped<IRedditRepository, RedditRepository>();
+                services.AddScoped<RedditDbContext>();
 
                 services.AddHostedService<RedditProcessorService>();
 

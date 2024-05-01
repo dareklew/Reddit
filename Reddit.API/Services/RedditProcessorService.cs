@@ -13,6 +13,7 @@ namespace Reddit.API.Services
         private readonly IRedditTokenApiClient _redditTokenApiClient;
         private readonly ILogger<RedditProcessorService> _logger;
         private readonly IRedditRepository _redditRepository;
+        private readonly IServiceProvider _serviceProvider;
 
 
         private readonly int _minInterval; //how frequently to query subreddits
@@ -21,16 +22,17 @@ namespace Reddit.API.Services
         public RedditProcessorService(
                 IRedditApiClient redditApiClient,
                 IRedditTokenApiClient redditTokenApiClient,
-                IOptionsMonitor<ExternalServicesConfiguration> options,
-                IRedditRepository redditRepository,
+                IOptionsMonitor<ExternalServicesConfiguration> options,                
+                IServiceProvider serviceProvider,
+
                 ILogger<RedditProcessorService> logger)
         {
             _redditApiClient = redditApiClient;
             _redditTokenApiClient = redditTokenApiClient;
             _logger = logger;
             _minInterval = options.Get(ExternalServicesConfiguration.RedditApi).MinInterval;
-            _subreddit = options.Get(ExternalServicesConfiguration.RedditApi).DefaultSubreddit;
-            _redditRepository = redditRepository;
+            _subreddit = options.Get(ExternalServicesConfiguration.RedditApi).DefaultSubreddit;            
+            _serviceProvider = serviceProvider;
 
 
         }
@@ -38,6 +40,9 @@ namespace Reddit.API.Services
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             int totalCount = 0;
+
+            using var scope = _serviceProvider.CreateScope();
+            var redditRepository = scope.ServiceProvider.GetRequiredService<IRedditRepository>();
 
             var result = await _redditTokenApiClient
                 .PostAccessTokenAsync( stoppingToken );
@@ -99,7 +104,7 @@ namespace Reddit.API.Services
                             Subreddit = p.Data.Subreddit,
                             Author = p.Data.Author
                         };
-                        await _redditRepository.UpsertPost(model);
+                        await redditRepository.UpsertPost(model);
                     }
 
 
