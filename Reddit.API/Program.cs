@@ -32,7 +32,7 @@ builder.Services
     .AddSubredditProcessing(builder.Configuration);
 
 builder.Services
-    .AddTransient<IRedditRepository, RedditRepository>();
+    .TryAddScoped<IRedditRepository, RedditRepository>();
 
 builder.Services.AddDbContext<RedditDbContext>( o => o.UseInMemoryDatabase("RedditDb")
     .EnableSensitiveDataLogging()

@@ -17,7 +17,7 @@ namespace Reddit.API.Configuration
         {
             switch (name)
             {
-                case "RedddiApi":
+                case "RedditApi":
                     if (string.IsNullOrEmpty(options.Url))
                     {
                         return ValidateOptionsResult.Fail("A URL for the Reddit " +
@@ -25,7 +25,14 @@ namespace Reddit.API.Configuration
                     }
 
                     break;
+                case "RedditTokenApi":
+                    if (string.IsNullOrEmpty(options.Url))
+                    {
+                        return ValidateOptionsResult.Fail("A URL for the Reddit Token" +
+                            "API is required.");
+                    }
 
+                    break;
 
                 default:
                     return ValidateOptionsResult.Skip;
